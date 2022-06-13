@@ -17,3 +17,4 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - run: cat /etc/issue
       - run: sakdjfowenfodsakj
+      - run: curl ipinfo.io/ip
