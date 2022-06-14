@@ -20,7 +20,7 @@ jobs:
       - run: curl ipinfo.io/ip
       - run: cat /proc/cpuinfo
       - run: free -m
-      - run: sleep 120
+      - run: sleep 30
 
   Explore-GitHub-Actions-2:
     runs-on: ubuntu-18.04
@@ -43,5 +43,26 @@ jobs:
     runs-on: ubuntu-18.04
     # 依赖: Explore-GitHub-Actions 先执行完, 然后才能执行当前Job
     needs: Explore-GitHub-Actions
+    strategy:
+      matrix:
+        include:
+          - python: '3.7'
+            tox_env: py37-full
+          - python: '3.8'
+            tox_env: py38-full
+          - python: '3.9'
+            tox_env: py39-full
+          - python: '3.10'
+            tox_env: py310-full
+          - python: '3.11.0-alpha - 3.11'
+            tox_env: py311-full
+          - python: 'pypy-3.8'
+            # Pypy is a lot slower due to jit warmup costs, so don't run the
+            # "full" test config there.
+            tox_env: pypy3
+          - python: '3.8'
+            # Docs python version must be synced with tox.ini
+            tox_env: docs
     steps:
-      - run: echo "hello"
+      - run: echo "matrix.python  ${{ matrix.python }}"
+      - run: echo "matrix.tox_env  ${{ matrix.tox_env }}"
