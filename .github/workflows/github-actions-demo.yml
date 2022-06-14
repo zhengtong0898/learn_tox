@@ -1,6 +1,7 @@
 name: GitHub Actions Demo
 on: [push]
 jobs:
+  # jobs 任务之间的执行策略是并发执行.
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
