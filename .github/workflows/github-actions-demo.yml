@@ -38,4 +38,10 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - run: cat /etc/issue
       - run: curl ipinfo.io/ip
-      - run: sleep 120
+
+  Explore-GitHub-Actions-3:
+    runs-on: ubuntu-18.04
+    # 依赖: Explore-GitHub-Actions 先执行完, 然后才能执行当前Job
+    needs: Explore-GitHub-Actions
+    steps:
+      - run: echo "hello"
