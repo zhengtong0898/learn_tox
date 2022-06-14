@@ -18,6 +18,8 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - run: cat /etc/issue
       - run: curl ipinfo.io/ip
+      - run: cat /proc/cpuinfo
+      - run: free -m
       - run: sleep 120
 
   Explore-GitHub-Actions-2:
