@@ -1,3 +1,4 @@
+# 这个例子并不像官方的截图那样有一个关系图, 也没有展示每个步骤的简讯.
 name: learn-github-actions
 on: [push]
 jobs:
